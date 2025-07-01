@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DREP - AI Agentic Solutions for Businesses | Launching Aug 15, 2025</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6e48aa;
+            --secondary: #9d50bb;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        header {
+            margin-bottom: 3rem;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #555;
+        }
+        
+        .launch-badge {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-form {
+            max-width: 500px;
+            margin: 0 auto 3rem;
+        }
+        
+        .cta-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 50px;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-button {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s;
+            width: 100%;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+        }
+        
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .feature-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            flex: 1 1 300px;
+            max-width: 350px;
+            text-align: left;
+        }
+        
+        .feature-item h3 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+        
+        .countdown {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            font-weight: 600;
+        }
+        
+        .countdown span {
+            color: var(--primary);
+        }
+        
+        footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">Drep</div>
+            <div class="launch-badge">Launching August 15, 2025</div>
+            <h1>Transform Your Business with Autonomous AI Agents</h1>
+            <p class="tagline">We're building the future of AI-driven automation—tailored for businesses of all sizes.</p>
+        </header>
+        
+        <div class="cta-form">
+            <h2>🔔 Get Early Access</h2>
+            <p>Be the first to experience Drep's AI agents</p>
+            <form id="waitlist-form">
+                <input type="email" class="cta-input" placeholder="Enter your email" required>
+                <button type="submit" class="cta-button">Notify Me</button>
+            </form>
+        </div>
+        
+        <div class="features">
+            <div class="feature-item">
+                <h3>AI Agents for Every Need</h3>
+                <p>Custom solutions for sales, support, operations, and more. Our agents adapt to your business requirements.</p>
+            </div>
+            
+            <div class="feature-item">
+                <h3>Seamless Automation</h3>
+                <p>Reduce operational costs and boost efficiency with our intelligent automation workflows.</p>
+            </div>
+            
+            <div class="feature-item">
+                <h3>Cutting-Edge Technology</h3>
+                <p>Powered by the latest agentic AI architectures for smarter, faster decision-making.</p>
+            </div>
+        </div>
+        
+        <div class="countdown">
+            <p>Launching in: <span id="countdown-timer">365 days</span></p>
+        </div>
+        
+        <footer>
+            <p>💡 Have questions? <a href="mailto:contact@drep.in">contact@drep.in</a></p>
+            <p>© 2025 Drep AI. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Countdown timer
+        function updateCountdown() {
+            const launchDate = new Date('August 15, 2025 00:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = launchDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('countdown-timer').innerHTML = 
+                `${days} days ${hours}h ${minutes}m ${seconds}s`;
+        }
+        
+        // Update every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+        
+        // Form submission
+        document.getElementById('waitlist-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input').value;
+            // Here you would typically send the email to your backend
+            alert(`Thanks! We'll notify you at ${email} when we launch.`);
+            this.querySelector('input').value = '';
+        });
+    </script>
+</body>
+</html>
