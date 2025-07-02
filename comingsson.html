@@ -194,12 +194,13 @@
         <div class="contact-form">
             <h2>📬 Contact Us</h2>
             <p>Have questions or want to partner with us? Drop a message.</p>
-            <form action="https://formspree.io/f/xpwrnzza" method="POST">
-                <input type="text" name="name" class="cta-input" placeholder="Your Name" required>
-                <input type="email" name="_replyto" class="cta-input" placeholder="Your Email" required>
-                <textarea name="message" class="cta-input" placeholder="Your Message" rows="5" required></textarea>
-                <button type="submit" class="cta-button">Send Message</button>
-            </form>
+           <form id="contact-form">
+    <input type="text" name="name" class="cta-input" placeholder="Your Name" required>
+    <input type="email" name="_replyto" class="cta-input" placeholder="Your Email" required>
+    <textarea name="message" class="cta-input" placeholder="Your Message" rows="5" required></textarea>
+    <button type="submit" class="cta-button">Send Message</button>
+</form>
+
         </div>
 
         <footer>
@@ -227,5 +228,35 @@
         updateCountdown();
         setInterval(updateCountdown, 1000);
     </script>
+    <script>
+    document.getElementById('contact-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const form = e.target;
+        const formData = new FormData(form);
+
+        fetch('https://formspree.io/f/xpwrnzza', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(response => {
+            if (response.ok) {
+                // Option 1: Redirect to main page
+                window.location.href = '/'; // Change to your homepage if different
+
+                // Option 2: Show inline success message (uncomment to use)
+                // alert('Message sent successfully!');
+                // form.reset();
+            } else {
+                alert('Oops! There was a problem submitting your form');
+            }
+        }).catch(error => {
+            alert('Error submitting form. Please try again later.');
+        });
+    });
+</script>
+
 </body>
 </html>
